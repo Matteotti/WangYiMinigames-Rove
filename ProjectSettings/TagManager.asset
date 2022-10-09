@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - NPC
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Obstacle
+  - Water
+  - UI
+  - Ground
+  - NPC
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Backback
+    uniqueID: 3372434085
+    locked: 0
+  - name: Back
+    uniqueID: 2844105639
+    locked: 0
+  - name: Mid
+    uniqueID: 1952604523
+    locked: 0
+  - name: Front
+    uniqueID: 150647269
+    locked: 0
+  - name: Frontfront
+    uniqueID: 52670993
+    locked: 0

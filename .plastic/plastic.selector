@@ -1,0 +1,4 @@
+repository "trust@jiangnanpige@cloud.cn"
+  path "/"
+    smartbranch "/main"  
+     
