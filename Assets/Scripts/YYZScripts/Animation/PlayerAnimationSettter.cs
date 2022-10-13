@@ -9,6 +9,7 @@ public class PlayerAnimationSettter : MonoBehaviour
     public AILerp AILerp;
     public bool isFacingRight;
     public float turnAroundSpeed;
+    public GameObject shadow;
     void Update()
     {
         animator.SetFloat("PlayerVelocity", AILerp.velocity.magnitude);
@@ -23,18 +24,22 @@ public class PlayerAnimationSettter : MonoBehaviour
         if (facingRight && transform.localEulerAngles.y <= 150)
         {
             transform.RotateAround(transform.position, transform.up, +turnAroundSpeed * Time.deltaTime);
+            shadow.transform.localScale -= new Vector3 (turnAroundSpeed * Time.deltaTime / 90, 0, 0);
         }
         else if (facingRight)
         {
             transform.localEulerAngles = new Vector3(0, 180, 0);
+            shadow.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (!facingRight && transform.localEulerAngles.y >= 30)
         {
             transform.RotateAround(transform.position, transform.up, +turnAroundSpeed * Time.deltaTime);
+            shadow.transform.localScale += new Vector3(turnAroundSpeed * Time.deltaTime / 90, 0, 0);
         }
         else if (!facingRight)
         {
             transform.localEulerAngles = new Vector3(0, 0, 0);
+            shadow.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }
