@@ -26,12 +26,12 @@ public class InstantiateLine : MonoBehaviour
         {
             if (NPCDetected)
             {
-                //执行判断函数，之后销毁
+                currentLine.GetComponent<LineDetectNPC>().Determine();
             }
             else
             {
-                //if (currentLine != null)
-                //    Destroy(currentLine);
+                if (currentLine != null)
+                    Destroy(currentLine);
             }
             allowInstantiateLine = false;
         }

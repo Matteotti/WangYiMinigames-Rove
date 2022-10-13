@@ -101,6 +101,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   outlineBlue: {fileID: 2100000, guid: 01684457eabf54848a81b33539b08663, type: 2}
   outlineYellow: {fileID: 2100000, guid: c521d69b5d447d5418ba727a2a3f00c8, type: 2}
+  timeGap: 0.5
 --- !u!61 &3311807149537956546
 BoxCollider2D:
   m_ObjectHideFlags: 0

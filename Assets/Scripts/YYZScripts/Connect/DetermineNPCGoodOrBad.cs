@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class DetermineNPCGoodOrBad : MonoBehaviour
 {
-    //储存善恶属性，气泡闪动效果
-    public bool good;
-    void Start()
+    //气泡闪动效果
+    public enum NPCState
     {
-        
+        good,
+        bad,
+        balance
     }
-
-    void Update()
+    public NPCState state;
+    void ShowIcon(GameObject icon)
     {
-        
+        //展示图标
+    }
+    void TransferToGood()
+    {
+        Debug.Log("TRANSFER TO " + NPCState.good);
+    }
+    void TransferToBad()
+    {
+        Debug.Log("TRANSFER TO " + NPCState.bad);
+    }
+    void InvokeTransferToGood(float time)
+    {
+        Invoke(nameof(TransferToGood), time);
+    }
+    void InvokeTransferToBad(float time)
+    {
+        Invoke(nameof(TransferToBad), time);
     }
 }

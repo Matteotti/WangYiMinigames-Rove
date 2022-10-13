@@ -6,6 +6,7 @@ public class LineDetectNPC : MonoBehaviour
 {
     public List<GameObject> targetNPC = new List<GameObject>();
     public Material defaultMaterial, outlineBlue, outlineYellow;
+    public float timeGap;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("NPC") && !targetNPC.Contains(collision.gameObject))
@@ -39,5 +40,42 @@ public class LineDetectNPC : MonoBehaviour
             if (targetNPC[targetNPC.Count - 1].GetComponent<SpriteRenderer>().material != outlineYellow)
                 targetNPC[targetNPC.Count - 1].GetComponent<SpriteRenderer>().material = outlineYellow;
         }
+    }
+    private void OnDestroy()
+    {
+        for (int i = 1; i < targetNPC.Count; i++)
+        {
+            if (targetNPC[i].GetComponent<SpriteRenderer>().material != defaultMaterial)
+                targetNPC[i].GetComponent<SpriteRenderer>().material = defaultMaterial;
+        }
+    }
+    public void Determine()
+    {
+        int goodNum = 0, badNum = 0;
+        if (targetNPC.Count > 1)
+        {
+            for (int i = 0; i < targetNPC.Count; i++)
+            {
+                if (targetNPC[i].GetComponent<DetermineNPCGoodOrBad>().state == DetermineNPCGoodOrBad.NPCState.good)
+                    goodNum++;
+                else if (targetNPC[i].GetComponent<DetermineNPCGoodOrBad>().state == DetermineNPCGoodOrBad.NPCState.bad)
+                    badNum++;
+            }
+            if (goodNum > badNum)
+            {
+                for (int i = 0; i < targetNPC.Count; i++)
+                {
+                    targetNPC[i].SendMessage("InvokeTransferToGood", i * timeGap, SendMessageOptions.DontRequireReceiver);
+                }
+            }
+            else if (badNum > goodNum)
+            {
+                for (int i = 0; i < targetNPC.Count; i++)
+                {
+                    targetNPC[i].SendMessage("InvokeTransferToBad", i * timeGap, SendMessageOptions.DontRequireReceiver);
+                }
+            }
+        }
+        Destroy(gameObject);
     }
 }
