@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1450861657
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0, g: 0.41266704, b: 1, a: 1}
@@ -98,6 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetNPC: []
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  outlineBlue: {fileID: 2100000, guid: 01684457eabf54848a81b33539b08663, type: 2}
+  outlineYellow: {fileID: 2100000, guid: c521d69b5d447d5418ba727a2a3f00c8, type: 2}
 --- !u!61 &3311807149537956546
 BoxCollider2D:
   m_ObjectHideFlags: 0

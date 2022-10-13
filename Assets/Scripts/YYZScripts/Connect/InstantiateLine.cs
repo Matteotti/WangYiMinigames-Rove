@@ -5,14 +5,16 @@ using UnityEngine;
 public class InstantiateLine : MonoBehaviour
 {
     public GameObject line, currentLine;
+    public bool NPCDetected, allowInstantiateLine;
     public Vector3 mousePosStart, mousePosCurrent;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1) && NPCDetected)
         {
             mousePosStart = MousePositionToGround() - Vector3.back * 0.1f;
+            allowInstantiateLine = true;
         }
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(1) && allowInstantiateLine)
         {
             mousePosCurrent = MousePositionToGround() - Vector3.back * 0.1f;
             if (currentLine == null)
@@ -20,10 +22,18 @@ public class InstantiateLine : MonoBehaviour
             else
                 currentLine = AdjustLinePos(currentLine, mousePosStart, mousePosCurrent);
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(1))
         {
-            //if (currentLine != null)
-            //    Destroy(currentLine);
+            if (NPCDetected)
+            {
+                //执行判断函数，之后销毁
+            }
+            else
+            {
+                //if (currentLine != null)
+                //    Destroy(currentLine);
+            }
+            allowInstantiateLine = false;
         }
     }
     Vector3 MousePositionToGround()

@@ -13,9 +13,9 @@ public class PlayerAnimationSettter : MonoBehaviour
     {
         animator.SetFloat("PlayerVelocity", AILerp.velocity.magnitude);
         TurnAround(isFacingRight);
-        if (AILerp.velocity.x > 0)
+        if (AILerp.velocity.x > 0.1f)
             isFacingRight = true;
-        if (AILerp.velocity.x < 0)
+        if (AILerp.velocity.x < 0.1f)
             isFacingRight = false;
     }
     void TurnAround(bool facingRight)
@@ -30,12 +30,10 @@ public class PlayerAnimationSettter : MonoBehaviour
         }
         else if (!facingRight && transform.localEulerAngles.y >= 30)
         {
-            Debug.Log("3");
             transform.RotateAround(transform.position, transform.up, +turnAroundSpeed * Time.deltaTime);
         }
         else if (!facingRight)
         {
-            Debug.Log("4");
             transform.localEulerAngles = new Vector3(0, 0, 0);
         }
     }
