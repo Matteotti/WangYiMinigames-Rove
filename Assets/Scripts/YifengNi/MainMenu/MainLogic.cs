@@ -7,22 +7,34 @@ using UnityEngine.UI;
 
 public class MainLogic : MonoBehaviour
 {
+    public GameObject radio_menu;
+    public GameObject phone_menu;
     public GameObject SliderPanel;
     public Slider Slider;
     public Texture2D normalTexture;
     public Texture2D letterTexture;
     public Texture2D ClickTexture;
+    public AudioSource soundeffect0;
+
     public float timer = 0f;
     public float growTime = 6f;
     public float maxSize = 1.5f;
 
-    private bool isMaxSize = false;
+
+    
     private Vector2 initialScale;
     private bool inbutton;
     private string levelname;
+    private float maxScale;
+
+    private bool show_resmenu;
+    private bool show_musicmenu;
     // Start is called before the first frame update
     void Start()
     {
+        maxScale = 0.65f;
+        show_musicmenu = false;
+        show_resmenu = false;
         initialScale = transform.localScale;
         inbutton = false;
         Cursor.SetCursor(normalTexture, Vector2.zero, CursorMode.ForceSoftware);
@@ -34,6 +46,7 @@ public class MainLogic : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && inbutton==true)
         {
             Cursor.SetCursor(ClickTexture, Vector2.zero, CursorMode.ForceSoftware);
+            soundeffect0.Play();
 
             
             switch (levelname)
@@ -43,11 +56,34 @@ public class MainLogic : MonoBehaviour
                     SliderPanel.SetActive(true);
                     LoadSceneAsync("Gameplay 1-1");
                     break;
+
                 case "Phone":
-                    StartCoroutine(LoadSceneAsync("Gameplay 2-1"));
-                    SliderPanel.SetActive(true);
-                    LoadSceneAsync("Gameplay 2-1");
+                    if (show_resmenu == false)
+                    {
+                        phone_menu.SetActive(true);
+                        show_resmenu = true;
+                    }
+                    else 
+                    { 
+                        phone_menu.SetActive(false);
+                        show_resmenu=false;
+                    }
+                   
                     break;
+
+                case "Radio":
+                    if (show_musicmenu == false)
+                    {
+                        radio_menu.SetActive(true);
+                        show_musicmenu = true;
+                    }
+                    else
+                    {
+                        radio_menu.SetActive(false);
+                        show_musicmenu = false;
+                    }
+                    break;
+
                 default:
                     
                     break;
@@ -63,10 +99,8 @@ public class MainLogic : MonoBehaviour
     
 
     private void OnMouseEnter()
-    {
-        ///鼠标进入更换鼠标纹理
-        transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-        ///鼠标进入更换鼠标纹理
+    {  
+        transform.localScale = new Vector3(maxScale, maxScale, maxScale);
         Cursor.SetCursor(letterTexture, Vector2.zero, CursorMode.ForceSoftware);
         levelname = gameObject.name;
         Debug.Log(levelname);
@@ -77,7 +111,9 @@ public class MainLogic : MonoBehaviour
 
     private void OnMouseExit()
     {
+        
         transform.localScale = initialScale;
+        
         Cursor.SetCursor(normalTexture, Vector2.zero, CursorMode.ForceSoftware);
         ///鼠标移除后将鼠标的 Texture 文本
         inbutton = false;
@@ -93,37 +129,5 @@ public class MainLogic : MonoBehaviour
             Slider.value = progress;
             yield return null;
         }
-    }
-
-    private IEnumerator Grow()
-    {
-        Vector2 startScale = transform.localScale;
-        Vector2 maxScale = new Vector2(maxSize, maxSize);
-
-        do
-        {
-            transform.localScale = Vector3.Lerp(startScale, maxScale, timer / growTime);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < growTime);
-
-        isMaxSize = true;
-    }
-
-    private IEnumerator Shrink()
-    {
-        Vector2 startScale = transform.localScale;
-
-
-        do
-        {
-            transform.localScale = Vector3.Lerp(startScale, initialScale, timer / growTime);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < growTime);
-
-        isMaxSize = false;
     }
 }

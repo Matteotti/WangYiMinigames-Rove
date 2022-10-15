@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetermineNPCGoodOrBad : MonoBehaviour
 {
-    //气泡闪动效果
+    public BubbleVisibleControl NPCBubble;
     public enum NPCState
     {
         good,
@@ -12,17 +12,15 @@ public class DetermineNPCGoodOrBad : MonoBehaviour
         balance
     }
     public NPCState state;
-    void ShowIcon(GameObject icon)
-    {
-        //展示图标
-    }
     void TransferToGood()
     {
-        Debug.Log("TRANSFER TO " + NPCState.good);
+        state = NPCState.good;
+        NPCBubble.ShowIconAfterConnection(NPCState.good);
     }
     void TransferToBad()
     {
-        Debug.Log("TRANSFER TO " + NPCState.bad);
+        state = NPCState.bad;
+        NPCBubble.ShowIconAfterConnection(NPCState.bad);
     }
     void InvokeTransferToGood(float time)
     {
