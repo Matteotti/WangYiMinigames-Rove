@@ -9,7 +9,8 @@ public class DetermineNPCGoodOrBad : MonoBehaviour
     {
         good,
         bad,
-        balance
+        balance,
+        plot
     }
     public NPCState state;
     void TransferToGood()

@@ -5,35 +5,38 @@ using UnityEngine;
 public class InstantiateLine : MonoBehaviour
 {
     public GameObject line, currentLine;
-    public bool NPCDetected, allowInstantiateLine;
+    public bool NPCDetected, allowInstantiateLine, isPlotFinished;
     public Vector3 mousePosStart, mousePosCurrent;
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && NPCDetected)
+        if (isPlotFinished)
         {
-            mousePosStart = MousePositionToGround() - Vector3.back * 0.1f;
-            allowInstantiateLine = true;
-        }
-        else if (Input.GetMouseButton(1) && allowInstantiateLine)
-        {
-            mousePosCurrent = MousePositionToGround() - Vector3.back * 0.1f;
-            if (currentLine == null)
-                currentLine = InstantiateLineFromTo(line, mousePosStart, mousePosCurrent);
-            else
-                currentLine = AdjustLinePos(currentLine, mousePosStart, mousePosCurrent);
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            if (NPCDetected)
+            if (Input.GetMouseButtonDown(1) && NPCDetected)
             {
-                currentLine.GetComponent<LineDetectNPC>().Determine();
+                mousePosStart = MousePositionToGround() - Vector3.back * 0.1f;
+                allowInstantiateLine = true;
             }
-            else
+            else if (Input.GetMouseButton(1) && allowInstantiateLine)
             {
-                if (currentLine != null)
-                    Destroy(currentLine);
+                mousePosCurrent = MousePositionToGround() - Vector3.back * 0.1f;
+                if (currentLine == null)
+                    currentLine = InstantiateLineFromTo(line, mousePosStart, mousePosCurrent);
+                else
+                    currentLine = AdjustLinePos(currentLine, mousePosStart, mousePosCurrent);
             }
-            allowInstantiateLine = false;
+            else if (Input.GetMouseButtonUp(1))
+            {
+                if (NPCDetected)
+                {
+                    currentLine.GetComponent<LineDetectNPC>().Determine();
+                }
+                else
+                {
+                    if (currentLine != null)
+                        Destroy(currentLine);
+                }
+                allowInstantiateLine = false;
+            }
         }
     }
     Vector3 MousePositionToGround()

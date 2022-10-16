@@ -50,6 +50,8 @@ public class BubbleVisibleControl : MonoBehaviour
             targetAnimator.runtimeAnimatorController = good;
         else if (state == DetermineNPCGoodOrBad.NPCState.bad)
             targetAnimator.runtimeAnimatorController = bad;
+        else if(state == DetermineNPCGoodOrBad.NPCState.plot)
+            Debug.Log("VAN PHONE");
         bubbleRenderer.color = new Color(1, 1, 1, 0);
         show = true;
         if (!gameObject.activeSelf)
