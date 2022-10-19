@@ -10,6 +10,7 @@ public class MainLogic : MonoBehaviour
     public GameObject radio_menu;
     public GameObject phone_menu;
     public GameObject SliderPanel;
+    public GameObject Begingame;
     public Slider Slider;
     public Texture2D normalTexture;
     public Texture2D letterTexture;
@@ -53,6 +54,7 @@ public class MainLogic : MonoBehaviour
             {
                 case "Letter":
                     StartCoroutine(LoadSceneAsync("Gameplay 1-1"));
+                    Begingame.SetActive(false);
                     SliderPanel.SetActive(true);
                     LoadSceneAsync("Gameplay 1-1");
                     break;

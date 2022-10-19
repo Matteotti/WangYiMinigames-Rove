@@ -16,8 +16,10 @@ public class PlotBuiltByConnect : MonoBehaviour
         public List<Condition> conditions;
         public float startTime;
         public string plotName;
+        public bool isNew;
     }
     public List<Plot> plots = new List<Plot>();
+    public List<GameObject> movedAwayNPC = new List<GameObject>();
     bool JudgeCondition(List<Condition> conditions)
     {
         for (int i = 0; i < conditions.Count; i++)
@@ -27,16 +29,23 @@ public class PlotBuiltByConnect : MonoBehaviour
         }
         return true;
     }
-    private void Update()
+    public void Judge()
     {
-        for(int i = 0;i < plots.Count;i++)
+        for (int i = 0; i < plots.Count; i++)
         {
             Plot plot = plots[i];
-            if(JudgeCondition(plot.conditions))
+            if (plot.isNew && JudgeCondition(plot.conditions))
             {
-                if(!IsInvoking(plot.plotName))
-                    Invoke(plot.plotName, plot.startTime);
+                Invoke(plot.plotName, plot.startTime);
+                plot.isNew = false;
             }
+        }
+    }
+    void TriggerNPCMoveAway()
+    {
+        for(int i = 0; i < movedAwayNPC.Count; i++)
+        {
+            movedAwayNPC[i].GetComponent<NPCMoveAway>().MoveAwayTrigger();
         }
     }
 }

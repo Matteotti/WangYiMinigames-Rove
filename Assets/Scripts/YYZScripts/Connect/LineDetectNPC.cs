@@ -5,8 +5,13 @@ using UnityEngine;
 public class LineDetectNPC : MonoBehaviour
 {
     public List<GameObject> targetNPC = new List<GameObject>();
-    public Material defaultMaterial, outlineBlue, outlineYellow;
+    public Material defaultMaterial, outlineWhite;
+    public GameObject plotManager;
     public float timeGap;
+    private void Start()
+    {
+        plotManager = GameObject.Find("PlotAnimBuilder");
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("NPC") && !targetNPC.Contains(collision.gameObject))
@@ -26,20 +31,9 @@ public class LineDetectNPC : MonoBehaviour
     private void FixedUpdate()
     {
         if (targetNPC.Count > 0)
-        {
-            if (targetNPC[0].GetComponent<SpriteRenderer>().material != outlineYellow)
-                targetNPC[0].GetComponent<SpriteRenderer>().material = outlineYellow;
-            for (int i = 1; i < targetNPC.Count - 1; i++)
-            {
-                if (targetNPC.Count > 0)
-                {
-                    if (targetNPC[i].GetComponent<SpriteRenderer>().material != outlineBlue)
-                        targetNPC[i].GetComponent<SpriteRenderer>().material = outlineBlue;
-                }
-            }
-            if (targetNPC[targetNPC.Count - 1].GetComponent<SpriteRenderer>().material != outlineYellow)
-                targetNPC[targetNPC.Count - 1].GetComponent<SpriteRenderer>().material = outlineYellow;
-        }
+            for (int i = 0; i < targetNPC.Count; i++)
+                if (targetNPC[i].GetComponent<SpriteRenderer>().material != outlineWhite)
+                    targetNPC[i].GetComponent<SpriteRenderer>().material = outlineWhite;
     }
     private void OnDestroy()
     {
@@ -76,6 +70,7 @@ public class LineDetectNPC : MonoBehaviour
                 }
             }
         }
-        Destroy(gameObject);
+        plotManager.GetComponent<PlotBuiltByConnect>().Judge();
+        Destroy(transform.parent.gameObject);
     }
 }

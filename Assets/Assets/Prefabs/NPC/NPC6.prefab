@@ -187,8 +187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5527426644441559663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.139, y: 3.203, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: -0.12, y: 2.608, z: 0}
+  m_LocalScale: {x: 1.8361499, y: 1.8361499, z: 1.8361499}
   m_Children: []
   m_Father: {fileID: 5527426643906599767}
   m_RootOrder: 1
@@ -282,6 +282,8 @@ MonoBehaviour:
   bubbleRenderer: {fileID: 0}
   showSpeed: 5
   stableTime: 0.5
+  stableTimeForOthers: 0.5
+  stableTimeForVideoAndPhone: 2.5
   show: 0
 --- !u!1 &5527426644726527130
 GameObject:

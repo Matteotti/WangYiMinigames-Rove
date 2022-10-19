@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &31647075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 581f76813d55f4d49bf5e5f63adc9427, type: 3}
     m_FontSize: 8
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -562,6 +562,7 @@ MonoBehaviour:
   radio_menu: {fileID: 770646728}
   phone_menu: {fileID: 0}
   SliderPanel: {fileID: 671747815}
+  Begingame: {fileID: 0}
   Slider: {fileID: 1066722405}
   normalTexture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
   letterTexture: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
@@ -1206,7 +1207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5512541743435036933, guid: 4805a4e821ced8541b0a9c3561a8b07e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7762604504234459410, guid: 4805a4e821ced8541b0a9c3561a8b07e, type: 3}
       propertyPath: m_Color.b
@@ -1903,7 +1904,7 @@ RectTransform:
   m_GameObject: {fileID: 854737705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 1478755237}
   m_RootOrder: 0
@@ -2552,6 +2553,7 @@ MonoBehaviour:
   radio_menu: {fileID: 0}
   phone_menu: {fileID: 31647074}
   SliderPanel: {fileID: 671747815}
+  Begingame: {fileID: 0}
   Slider: {fileID: 1066722405}
   normalTexture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
   letterTexture: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
@@ -2969,7 +2971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1516754226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3234,7 +3236,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 581f76813d55f4d49bf5e5f63adc9427, type: 3}
     m_FontSize: 8
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -3470,7 +3472,7 @@ RectTransform:
   m_GameObject: {fileID: 1803778675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 550949694}
   m_RootOrder: 0
@@ -3552,6 +3554,7 @@ MonoBehaviour:
   radio_menu: {fileID: 0}
   phone_menu: {fileID: 0}
   SliderPanel: {fileID: 671747815}
+  Begingame: {fileID: 494926377}
   Slider: {fileID: 1066722405}
   normalTexture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
   letterTexture: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
@@ -3905,7 +3908,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270.4, y: -58.6}
+  m_AnchoredPosition: {x: -271.1, y: -57.2}
   m_SizeDelta: {x: 31.7494, y: 17.8507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1951873636
@@ -3931,7 +3934,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 581f76813d55f4d49bf5e5f63adc9427, type: 3}
     m_FontSize: 8
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40

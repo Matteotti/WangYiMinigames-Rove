@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlotBuiltByTime : MonoBehaviour
 {
-    //记得加注释怎么使用
-    //时间线剧情：玩手机看视频->老人摔倒->连线->老人起身->放插画
-    //最后一个函数没写完
-    public bool isConnected;
+    public bool isConnected, isFirstTime;
     public GameObject lineManager, showPlotImage;
     public List<Plot> plots = new List<Plot>();
     public List<GameObject> PhoneAndVideoNPC = new List<GameObject>();
@@ -29,8 +26,9 @@ public class PlotBuiltByTime : MonoBehaviour
     }
     private void Update()
     {
-        if(isConnected && !IsInvoking())
+        if(isConnected && !IsInvoking() && isFirstTime)
         {
+            isFirstTime = false;
             for (int i = 0; i < plots.Count; i++)
             {
                 Plot plot = plots[i];
@@ -58,6 +56,7 @@ public class PlotBuiltByTime : MonoBehaviour
     }
     void GameEndImage()
     {
-        showPlotImage.SendMessage("ShowInOrder", SendMessageOptions.DontRequireReceiver);
+        showPlotImage.SetActive(true);
+        showPlotImage.SendMessage("ShowImageInOrder", SendMessageOptions.DontRequireReceiver);
     }
 }

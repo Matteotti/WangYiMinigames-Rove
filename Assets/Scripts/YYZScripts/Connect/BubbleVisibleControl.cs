@@ -7,7 +7,7 @@ public class BubbleVisibleControl : MonoBehaviour
     public RuntimeAnimatorController good, bad, balance;
     public Animator targetAnimator;
     public SpriteRenderer bubbleRenderer;
-    public float showSpeed, stableTime;
+    public float showSpeed, stableTime, stableTimeForOthers, stableTimeForVideoAndPhone;
     [SerializeField] private bool show;
     private void Start()
     {
@@ -47,11 +47,19 @@ public class BubbleVisibleControl : MonoBehaviour
     public void ShowIconAfterConnection(DetermineNPCGoodOrBad.NPCState state)
     {
         if (state == DetermineNPCGoodOrBad.NPCState.good)
+        {
             targetAnimator.runtimeAnimatorController = good;
+            stableTime = stableTimeForOthers;
+        }
         else if (state == DetermineNPCGoodOrBad.NPCState.bad)
+        {
             targetAnimator.runtimeAnimatorController = bad;
+            stableTime = stableTimeForOthers;
+        }
         else if(state == DetermineNPCGoodOrBad.NPCState.plot)
-            Debug.Log("VAN PHONE");
+        {
+            stableTime = stableTimeForVideoAndPhone;
+        }
         bubbleRenderer.color = new Color(1, 1, 1, 0);
         show = true;
         if (!gameObject.activeSelf)
